@@ -2,9 +2,11 @@ package hello;
 
 import java.util.Date;
 
+
 public class TimePrinter implements Runnable{
     int pauseTime;
     String name;
+
     public TimePrinter(int x, String n){
         pauseTime = x;
         name = n;
