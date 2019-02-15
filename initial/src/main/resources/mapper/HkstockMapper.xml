@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wxf.dao.HkstockMapper">
+    <resultMap id="BaseResultMap" type="com.wxf.domain.model.Hkstock">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="hkcode" property="hkcode" jdbcType="VARCHAR"/>
+        <result column="hkname" property="hkname" jdbcType="VARCHAR"/>
+        <result column="number" property="number" jdbcType="INTEGER"/>
+        <result column="percent" property="percent" jdbcType="DECIMAL"/>
+        <result column="date" property="date" jdbcType="DATE"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, hkcode, hkname, number, percent, date, code
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from hkstock
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from hkstock
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.wxf.domain.model.Hkstock">
+    insert into hkstock (id, hkcode, hkname, 
+      number, percent, date, 
+      code)
+    values (#{id,jdbcType=BIGINT}, #{hkcode,jdbcType=VARCHAR}, #{hkname,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, #{percent,jdbcType=DECIMAL}, #{date,jdbcType=DATE}, 
+      #{code,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.wxf.domain.model.Hkstock">
+        insert into hkstock
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="hkcode != null">
+                hkcode,
+            </if>
+            <if test="hkname != null">
+                hkname,
+            </if>
+            <if test="number != null">
+                number,
+            </if>
+            <if test="percent != null">
+                percent,
+            </if>
+            <if test="date != null">
+                date,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="hkcode != null">
+                #{hkcode,jdbcType=VARCHAR},
+            </if>
+            <if test="hkname != null">
+                #{hkname,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                #{number,jdbcType=INTEGER},
+            </if>
+            <if test="percent != null">
+                #{percent,jdbcType=DECIMAL},
+            </if>
+            <if test="date != null">
+                #{date,jdbcType=DATE},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wxf.domain.model.Hkstock">
+        update hkstock
+        <set>
+            <if test="hkcode != null">
+                hkcode = #{hkcode,jdbcType=VARCHAR},
+            </if>
+            <if test="hkname != null">
+                hkname = #{hkname,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                number = #{number,jdbcType=INTEGER},
+            </if>
+            <if test="percent != null">
+                percent = #{percent,jdbcType=DECIMAL},
+            </if>
+            <if test="date != null">
+                date = #{date,jdbcType=DATE},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.wxf.domain.model.Hkstock">
+    update hkstock
+    set hkcode = #{hkcode,jdbcType=VARCHAR},
+      hkname = #{hkname,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      percent = #{percent,jdbcType=DECIMAL},
+      date = #{date,jdbcType=DATE},
+      code = #{code,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

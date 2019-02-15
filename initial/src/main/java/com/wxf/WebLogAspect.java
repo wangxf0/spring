@@ -1,10 +1,7 @@
-package hello;
+package com.wxf;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -19,11 +16,11 @@ public class WebLogAspect {
 
     private Logger logger = (Logger) Logger.getLogger(String.valueOf(getClass()));
 
-    @Pointcut("execution(public * hello.services.*(..))")
+    //@Pointcut("execution(public * com.wxf.services.*(..))")
     public void webLog() {
     }
 
-    @Before("webLog()")
+    //@Before("webLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
         // 接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -38,7 +35,7 @@ public class WebLogAspect {
 
     }
 
-    @AfterReturning(returning = "ret", pointcut = "webLog()")
+    //@AfterReturning(returning = "ret", pointcut = "webLog()")
     public void doAfterReturning(Object ret) throws Throwable {
         // 处理完请求，返回内容
         logger.info("RESPONSE : " + ret);

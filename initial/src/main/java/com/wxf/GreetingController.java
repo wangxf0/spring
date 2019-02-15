@@ -1,6 +1,6 @@
-package hello;
+package com.wxf;
 
-import hello.services.GreetingService;
+import com.wxf.services.GreetingService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
